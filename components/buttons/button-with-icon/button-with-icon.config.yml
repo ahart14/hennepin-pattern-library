@@ -1,0 +1,6 @@
+title: Button with icon
+context:
+    text: Enter context here.
+variants:
+    - name: Icon on left
+    - name: Icon on right

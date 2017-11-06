@@ -1,0 +1,1 @@
+Add notes about how the component is used.

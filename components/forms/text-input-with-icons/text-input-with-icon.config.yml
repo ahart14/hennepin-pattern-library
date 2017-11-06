@@ -1,0 +1,7 @@
+title: Text input with icon
+context:
+    text: Enter context here.
+variants:
+    - name: Icon before input
+
+    - name: Icon after input

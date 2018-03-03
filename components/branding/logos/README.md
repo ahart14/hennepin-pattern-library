@@ -1,0 +1,3 @@
+Hennepin County's primary logo is the trusted Hennepin "H." This bold and highly recognizable symbol acts as a seal of approval on all Hennepin County branded materials. It must be used in all publications and promotional materials for county programs and services.
+
+The Hennepin County wordmark is a clear and uniform visual expression of the county name. It is designed to augment the Hennepin “H" in specific circumstances, but should never be used in place of it.

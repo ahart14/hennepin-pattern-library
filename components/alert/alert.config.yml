@@ -1,3 +1,4 @@
 title: Alert
+status: "prototype"
 context:
-    text: Enter context here.
+    text: "This is an alert"

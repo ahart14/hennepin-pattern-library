@@ -1,3 +1,25 @@
+// Global Sass files
+@import "sass/custom.scss";
+@import "sass/variable-overrides.scss";
 
-@import "sass/global.scss";
+// Include component specific styles
 @import "components/alert/alert.scss";
+@import "components/branding/colors/colors.scss";
+
+// Include all of Bootstrap after custom CSS 
+// Option A: Include all of Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Include specific parts of Bootstrap as needed - remove option A if using
+// Option B: Include parts of Bootstrap
+
+// Required
+//@import "node_modules/bootstrap/scss/functions";
+//@import "node_modules/bootstrap/scss/variables";
+//@import "node_modules/bootstrap/scss/mixins";
+// Optional
+//@import "node_modules/bootstrap/scss/reboot";
+//@import "node_modules/bootstrap/scss/type";
+//@import "node_modules/bootstrap/scss/images";
+//@import "node_modules/bootstrap/scss/code";
+//@import "node_modules/bootstrap/scss/grid";

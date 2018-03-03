@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+var sass = require('gulp-sass');
 
 /*
  * Configure a Fractal instance.
@@ -20,6 +20,7 @@ fractal.set('project.title', 'Hennepin County pattern library'); // title for th
 fractal.docs.set('path', `${__dirname}/docs`); // location of the documentation directory.
 fractal.components.set('path', `${__dirname}/components`); // location of the component directory.
 fractal.web.set('static.path', path.join(__dirname, 'public'));
+fractal.components.set('default.status', 'wip');
 
 // any other configuration or customisation here
 
@@ -57,7 +58,7 @@ gulp.task('components', function() {
         .pipe(gulp.dest('public/css/'))
 });
 //Start Fractal and Gulp watch for updating CSS
-gulp.task('start',['fractal:start', 'styles'], function() {
+gulp.task('start',['fractal:start', 'components', 'styles'], function() {
     gulp.watch('sass/**/*.scss',['styles']);
     gulp.watch('components/**/*.scss',['components']);
 });
@@ -71,8 +72,6 @@ gulp.task('start',['fractal:start', 'styles'], function() {
  * The build destination will be the directory specified in the 'builder.dest'
  * configuration option set above.
  */
-
-
 
 //Need to figure out how this really works - interfering with static assets in public folder
 

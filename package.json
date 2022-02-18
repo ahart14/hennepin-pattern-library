@@ -2,11 +2,13 @@
   "name": "hennepin-pattern-library",
   "version": "0.1.0",
   "dependencies": {
-    "@frctl/fractal": "^1.1.7"
+    "@frctl/fractal": "^1.5.13",
+    "gulp-update": "^0.0.2",
+    "sass": "^1.49.8"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-cache-bust": "^1.1.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^5.1.0"
   }
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-var sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 
 /*
  * Configure a Fractal instance.
@@ -16,11 +16,10 @@ const path = require('path');
 const fractal = require('@frctl/fractal').create();
 
 fractal.set('project.title', 'Hennepin County pattern library'); // title for the project
-//fractal.web.set('builder.dest', 'build'); // destination for the static export
+fractal.web.set('builder.dest', 'build'); // destination for the static export
+fractal.web.set('static.path', __dirname + '/public');
 fractal.docs.set('path', `${__dirname}/docs`); // location of the documentation directory.
 fractal.components.set('path', `${__dirname}/components`); // location of the component directory.
-fractal.web.set('static.path', path.join(__dirname, 'public'));
-fractal.components.set('default.status', 'wip');
 
 // any other configuration or customisation here
 
@@ -47,21 +46,21 @@ gulp.task('fractal:start', function(){
 });
 
 // Set Gulp source and destination for CSS files
-gulp.task('styles', function() {
+gulp.task('styles', async function() {
     gulp.src('sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('public/css/'))
 });
-gulp.task('components', function() {
+gulp.task('components', async function() {
     gulp.src('components/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('public/css/'))
 });
 //Start Fractal and Gulp watch for updating CSS
-gulp.task('start',['fractal:start', 'components', 'styles'], function() {
-    gulp.watch('sass/**/*.scss',['styles']);
-    gulp.watch('components/**/*.scss',['components']);
-});
+gulp.task('start', gulp.series('fractal:start', 'styles', 'components', function() {
+    gulp.watch('sass/**/*.scss', gulp.series('styles'));
+    gulp.watch('components/**/*.scss', gulp.series('components'));
+}));
 
 /*
  * Run a static export of the project web UI.
@@ -73,9 +72,6 @@ gulp.task('start',['fractal:start', 'components', 'styles'], function() {
  * configuration option set above.
  */
 
-//Need to figure out how this really works - interfering with static assets in public folder
-
-/*
 gulp.task('fractal:build', function(){
     const builder = fractal.web.builder();
     builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
@@ -84,4 +80,3 @@ gulp.task('fractal:build', function(){
         logger.success('Fractal build completed!');
     });
 });
-*/
